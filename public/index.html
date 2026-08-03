@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A safety-gated missed-call recovery workflow for locksmith and home-service teams.">
+    <meta name="theme-color" content="#10261f">
+    <title>Missed-Call Rescue Desk</title>
+    <link rel="icon" href="/public/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/public/style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace">Skip to workspace</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">MR</div>
+          <div>
+            <p class="eyebrow">Operations demo</p>
+            <h1>Rescue Desk</h1>
+          </div>
+        </div>
+
+        <nav>
+          <button class="nav active" data-view="inbox" aria-current="page">
+            <span aria-hidden="true">01</span> Inbox
+          </button>
+          <button class="nav" data-view="approvals">
+            <span aria-hidden="true">02</span> Approvals
+          </button>
+          <button class="nav" data-view="scripts">
+            <span aria-hidden="true">03</span> Scripts
+          </button>
+          <button class="nav" data-view="audit">
+            <span aria-hidden="true">04</span> Audit trail
+          </button>
+          <button class="nav" data-view="settings">
+            <span aria-hidden="true">05</span> Controls
+          </button>
+        </nav>
+
+        <div class="guardrail">
+          <div class="guardrail-title">
+            <span class="status-dot" aria-hidden="true"></span>
+            <strong>Safe demo mode</strong>
+          </div>
+          <p>No live SMS or telephony. Every action stays in this browser session.</p>
+        </div>
+      </aside>
+
+      <main id="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Locksmith operations workflow</p>
+            <h2 id="view-title">Missed-call inbox</h2>
+            <p id="view-subtitle" class="view-subtitle">Recover high-intent calls without bypassing consent or human judgment.</p>
+          </div>
+          <div class="topbar-actions">
+            <div class="live-pill"><span aria-hidden="true"></span> Local demo</div>
+            <button id="reset-demo" class="secondary compact">Reset scenario</button>
+          </div>
+        </header>
+
+        <section class="metrics" aria-label="Workflow summary">
+          <article>
+            <p>Open missed calls</p>
+            <div><strong id="stat-missed">0</strong><span class="metric-trend">demo leads</span></div>
+          </article>
+          <article>
+            <p>Human decisions</p>
+            <div><strong id="stat-approvals">0</strong><span class="metric-trend warning-text">waiting</span></div>
+          </article>
+          <article>
+            <p>Audit coverage</p>
+            <div><strong id="stat-audit">0</strong><span class="metric-trend">events</span></div>
+          </article>
+          <article class="value-card">
+            <p>Core promise</p>
+            <div><strong>&lt; 5 min</strong><span class="metric-trend">to understand</span></div>
+          </article>
+        </section>
+
+        <div id="status-message" class="sr-only" role="status" aria-live="polite"></div>
+
+        <section id="inbox" class="view active" aria-labelledby="view-title">
+          <div class="split">
+            <section class="queue-column" aria-label="Missed calls">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">Live queue</p>
+                  <h3>Missed calls</h3>
+                </div>
+                <span class="policy-chip">Consent checked</span>
+              </div>
+              <div id="lead-list" class="lead-list"></div>
+            </section>
+            <section id="lead-detail" class="detail" aria-label="Selected lead"></section>
+          </div>
+        </section>
+
+        <section id="approvals" class="view" aria-labelledby="view-title">
+          <div class="section-head wide">
+            <div>
+              <p class="eyebrow">Human-in-the-loop</p>
+              <h3>Approval queue</h3>
+            </div>
+            <p>Pricing, dispatch, legal-sensitive work, and unusual messages stop here.</p>
+          </div>
+          <div id="approval-list" class="stack"></div>
+        </section>
+
+        <section id="scripts" class="view" aria-labelledby="view-title">
+          <div class="section-head wide">
+            <div>
+              <p class="eyebrow">Controlled messaging</p>
+              <h3>Approved scripts</h3>
+            </div>
+            <p>Template-only policy keeps the demo predictable and reviewable.</p>
+          </div>
+          <div id="script-list" class="script-grid"></div>
+        </section>
+
+        <section id="audit" class="view" aria-labelledby="view-title">
+          <div class="section-head wide">
+            <div>
+              <p class="eyebrow">Evidence</p>
+              <h3>Session audit trail</h3>
+            </div>
+            <p>Every meaningful browser action records actor, lead, channel, and result.</p>
+          </div>
+          <div id="audit-list" class="audit-list"></div>
+        </section>
+
+        <section id="settings" class="view" aria-labelledby="view-title">
+          <div class="settings-grid">
+            <article class="panel">
+              <p class="eyebrow">Demo identity</p>
+              <h3>Business profile</h3>
+              <label>Business name <input value="Demo Locksmith" readonly></label>
+              <label>Service area <input value="Greater Toronto Area" readonly></label>
+              <label>Review link <input value="Demo URL — no live destination" readonly></label>
+            </article>
+            <article class="panel">
+              <p class="eyebrow">Action policy</p>
+              <h3>Permission gates</h3>
+              <ul class="check-list">
+                <li>Only approved templates can be simulated.</li>
+                <li>Dispatch and pricing require a human.</li>
+                <li>Legal-sensitive work escalates to the owner.</li>
+                <li>Opt-out blocks every follow-up action.</li>
+              </ul>
+            </article>
+            <article class="panel">
+              <p class="eyebrow">Production boundary</p>
+              <h3>Before going live</h3>
+              <ul class="check-list muted-list">
+                <li>Confirm consent and retention policy.</li>
+                <li>Implement STOP and do-not-contact handling.</li>
+                <li>Complete provider and A2P registration.</li>
+                <li>Keep reviews voluntary and ungated.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <footer>
+          <span>Portfolio prototype · synthetic data only</span>
+          <span>Built around operational safety, not autonomous outreach</span>
+        </footer>
+      </main>
+    </div>
+    <script src="/public/app.js"></script>
+  </body>
+</html>

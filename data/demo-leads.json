@@ -1,0 +1,84 @@
+[
+  {
+    "id": "lead_home_lockout_001",
+    "customer": "Maya R.",
+    "phone": "+1 (416) 555-0184",
+    "status": "new",
+    "serviceType": "Home lockout",
+    "urgency": "Emergency",
+    "area": "North York",
+    "source": "Missed call",
+    "missedAt": "2026-05-28T08:42:00-04:00",
+    "consentStatus": "service_context",
+    "riskFlags": [],
+    "intake": {
+      "property": "Home",
+      "address": "",
+      "preferredTime": "Now",
+      "notes": ""
+    },
+    "suggestedNextAction": "Send approved missed-call rescue text.",
+    "timeline": [
+      {
+        "at": "08:42",
+        "type": "call",
+        "text": "Missed inbound call to main business line."
+      }
+    ]
+  },
+  {
+    "id": "lead_eviction_flag_002",
+    "customer": "Unknown caller",
+    "phone": "+1 (647) 555-0199",
+    "status": "intake_needed",
+    "serviceType": "Lock change",
+    "urgency": "Same day",
+    "area": "Scarborough",
+    "source": "Voicemail",
+    "missedAt": "2026-05-28T08:19:00-04:00",
+    "consentStatus": "service_context",
+    "riskFlags": ["tenant_landlord_conflict", "legal_sensitive"],
+    "intake": {
+      "property": "Apartment",
+      "address": "Needs confirmation",
+      "preferredTime": "Today",
+      "notes": "Caller mentioned tenant issue."
+    },
+    "suggestedNextAction": "Escalate to owner before any promise or pricing.",
+    "timeline": [
+      {
+        "at": "08:19",
+        "type": "voicemail",
+        "text": "Caller asks about changing locks during a tenant dispute."
+      }
+    ]
+  },
+  {
+    "id": "lead_optout_003",
+    "customer": "Jordan P.",
+    "phone": "+1 (437) 555-0121",
+    "status": "do_not_contact",
+    "serviceType": "Quote request",
+    "urgency": "Flexible",
+    "area": "Etobicoke",
+    "source": "Missed call",
+    "missedAt": "2026-05-28T07:55:00-04:00",
+    "consentStatus": "opted_out",
+    "riskFlags": ["do_not_contact"],
+    "intake": {
+      "property": "Business",
+      "address": "",
+      "preferredTime": "",
+      "notes": "Customer replied STOP in previous interaction."
+    },
+    "suggestedNextAction": "No follow-up allowed.",
+    "timeline": [
+      {
+        "at": "07:55",
+        "type": "call",
+        "text": "Missed inbound call. Historical opt-out exists."
+      }
+    ]
+  }
+]
+
